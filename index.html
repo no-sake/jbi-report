@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JBI Report — Japan Business Intelligence — Private Company Specialists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #1a1814; --paper: #f5f2ec; --cream: #ede9e0; --gold: #b8963e; --gold-light: #d4b060; --muted: #6b6560; --red: #c0392b; --border: rgba(26,24,20,0.12); --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'DM Sans', sans-serif; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 64px; }
+.nav-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { background: var(--ink); color: var(--paper) !important; padding: 0.45rem 1.1rem; border-radius: 2px; }
+.nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 1.5px; background: var(--ink); transition: 0.3s; }
+.mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--border); padding: 1.5rem 5vw; z-index: 99; flex-direction: column; gap: 1.2rem; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 0.9rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+.mobile-menu a:hover { color: var(--ink); }
+.hero { min-height: 100vh; padding: 120px 5vw 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+.hero-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.6rem; }
+.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+h1 { font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 600; line-height: 1.12; margin-bottom: 1.4rem; letter-spacing: -0.01em; }
+h1 em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: 1.05rem; color: var(--muted); margin-bottom: 2.4rem; max-width: 440px; font-weight: 300; line-height: 1.8; }
+.btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary { background: var(--ink); color: var(--paper); padding: 0.85rem 2rem; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background 0.2s, transform 0.15s; display: inline-block; }
+.btn-primary:hover { background: var(--gold); color: var(--ink); transform: translateY(-1px); }
+.btn-secondary { border: 1px solid var(--border); color: var(--ink); padding: 0.85rem 2rem; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: border-color 0.2s, transform 0.15s; display: inline-block; }
+.btn-secondary:hover { border-color: var(--ink); transform: translateY(-1px); }
+.hero-visual { position: relative; display: flex; justify-content: center; }
+.stats-bar { background: var(--ink); color: var(--paper); padding: 2.5rem 5vw; }
+.stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+.stat-num { font-family: var(--serif); font-size: 2.4rem; font-weight: 600; color: var(--gold-light); display: block; line-height: 1; margin-bottom: 0.4rem; }
+.stat-label { font-size: 0.78rem; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(245,242,236,0.6); }
+section { padding: 6rem 5vw; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 600; line-height: 1.18; margin-bottom: 1.2rem; }
+h2 em { font-style: italic; color: var(--gold); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-text p { color: var(--muted); font-weight: 300; margin-bottom: 1rem; line-height: 1.85; }
+.credential-list { list-style: none; margin-top: 1.8rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.credential-list li { display: flex; align-items: flex-start; gap: 0.8rem; font-size: 0.9rem; color: var(--muted); }
+.credential-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-family: var(--serif); font-size: 1rem; }
+.about-visual { background: var(--cream); border-radius: 2px; padding: 2.5rem; }
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline-item { display: grid; grid-template-columns: 56px 1fr; gap: 1rem; padding-bottom: 1.6rem; position: relative; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-year { font-family: var(--serif); font-size: 0.82rem; color: var(--gold); font-weight: 600; padding-top: 2px; text-align: right; }
+.timeline-content { padding-left: 1rem; border-left: 1px solid var(--border); padding-bottom: 1.6rem; }
+.timeline-item:last-child .timeline-content { padding-bottom: 0; }
+.timeline-role { font-size: 0.88rem; font-weight: 500; margin-bottom: 0.2rem; }
+.timeline-org { font-size: 0.78rem; color: var(--muted); font-weight: 300; }
+#services { background: var(--cream); }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.service-card { background: white; border: 1px solid var(--border); border-radius: 2px; padding: 2rem; transition: box-shadow 0.2s, transform 0.2s; }
+.service-card:hover { box-shadow: 0 12px 40px rgba(26,24,20,0.08); transform: translateY(-2px); }
+.service-icon { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 2px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; font-family: var(--serif); font-size: 1rem; color: var(--gold); }
+.service-card h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.6rem; }
+.service-card p { font-size: 0.85rem; color: var(--muted); font-weight: 300; line-height: 1.75; }
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; max-width: 800px; }
+.price-card { border: 1px solid var(--border); border-radius: 2px; padding: 2.4rem 2rem; position: relative; background: white; }
+.price-card.featured { border-color: var(--gold); background: var(--ink); color: var(--paper); }
+.price-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold); color: var(--ink); padding: 0.25rem 0.7rem; border-radius: 2px; position: absolute; top: -1px; right: 1.5rem; }
+.price-tier { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; }
+.price-amount { font-family: var(--serif); font-size: 2.8rem; font-weight: 600; line-height: 1; margin: 1rem 0 0.2rem; color: var(--gold-light); }
+.price-amount span { font-size: 1rem; font-weight: 400; color: var(--muted); }
+.price-card.featured .price-amount span { color: rgba(245,242,236,0.5); }
+.price-delivery { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem; }
+.price-card.featured .price-delivery { color: rgba(245,242,236,0.5); }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.8rem; }
+.price-features li { font-size: 0.84rem; display: flex; align-items: flex-start; gap: 0.6rem; font-weight: 300; color: var(--muted); }
+.price-card.featured .price-features li { color: rgba(245,242,236,0.7); }
+.price-features li::before { content: '✓'; color: var(--gold-light); flex-shrink: 0; font-weight: 500; }
+.btn-price { display: block; text-align: center; padding: 0.85rem; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: 0.2s; border: 1px solid var(--border); color: var(--ink); }
+.btn-price:hover { border-color: var(--gold); color: var(--gold); }
+.price-card.featured .btn-price { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+.price-card.featured .btn-price:hover { background: var(--gold-light); }
+#order { background: var(--cream); }
+.order-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.order-info p { color: var(--muted); font-weight: 300; margin-bottom: 1rem; line-height: 1.85; }
+.process-steps { list-style: none; margin-top: 1.8rem; display: flex; flex-direction: column; gap: 1.2rem; }
+.process-steps li { display: flex; align-items: flex-start; gap: 1rem; font-size: 0.88rem; color: var(--muted); font-weight: 300; }
+.step-num { font-family: var(--serif); font-size: 1.2rem; color: var(--gold); font-weight: 600; min-width: 24px; line-height: 1.3; }
+.order-form { background: white; border: 1px solid var(--border); border-radius: 2px; padding: 2.4rem; }
+.form-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; margin-bottom: 0.4rem; }
+.form-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.8rem; font-weight: 300; }
+.form-group { margin-bottom: 1.2rem; }
+label { display: block; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+input, select, textarea { width: 100%; background: var(--paper); border: 1px solid var(--border); border-radius: 2px; padding: 0.7rem 0.9rem; font-family: var(--sans); font-size: 0.9rem; color: var(--ink); outline: none; transition: border-color 0.2s; appearance: none; }
+input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+textarea { resize: vertical; min-height: 90px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.radio-group { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.radio-option { border: 1px solid var(--border); border-radius: 2px; padding: 0.8rem; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+.radio-option:has(input:checked) { border-color: var(--gold); background: rgba(184,150,62,0.05); }
+.radio-option input { display: none; }
+.radio-label { font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 0.15rem; text-transform: none; letter-spacing: 0; color: var(--ink); }
+.radio-price { font-size: 0.75rem; color: var(--gold); font-weight: 500; text-transform: none; letter-spacing: 0; }
+.btn-submit { width: 100%; background: var(--ink); color: var(--paper); border: none; padding: 1rem; font-family: var(--sans); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 2px; cursor: pointer; transition: background 0.2s; margin-top: 0.4rem; }
+.btn-submit:hover { background: var(--gold); color: var(--ink); }
+.form-note { font-size: 0.72rem; color: var(--muted); text-align: center; margin-top: 0.8rem; font-weight: 300; }
+footer { background: var(--ink); color: rgba(245,242,236,0.55); padding: 3rem 5vw; }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; }
+.footer-brand { font-family: var(--serif); font-size: 1.2rem; color: var(--paper); font-weight: 600; margin-bottom: 0.6rem; }
+.footer-brand span { color: var(--gold-light); }
+.footer-tagline { font-size: 0.78rem; font-weight: 300; line-height: 1.7; }
+.footer-col h4 { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper); margin-bottom: 1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col a { font-size: 0.82rem; color: rgba(245,242,236,0.55); text-decoration: none; transition: color 0.2s; font-weight: 300; }
+.footer-col a:hover { color: var(--gold-light); }
+.footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(245,242,236,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; }
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 100px; text-align: center; }
+  .hero-eyebrow { justify-content: center; }
+  .hero-sub { margin: 0 auto 2rem; }
+  .btn-group { justify-content: center; }
+  .hero-visual { order: -1; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+  .order-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 580px) {
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 1.8rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  h1 { font-size: 2.1rem; }
+}
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="nav-logo">JBI<span>.</span>Report</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#order" class="nav-cta">Request a Report</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#order" onclick="closeMenu()" style="color:var(--gold)">Request a Report</a>
+</div>
+<section style="padding:0;">
+  <div class="hero">
+    <div class="hero-text fade-in">
+      <div class="hero-eyebrow">Japan Business Intelligence — Private Company Specialists</div>
+      <h1>The financial truth<br>behind Japan's<br><em>private companies.</em></h1>
+      <p class="hero-sub">Most Japanese companies are privately held and publish no financial statements. We source, interpret, and translate the financial data that standard databases simply cannot access — giving you a clear picture before you commit.</p>
+      <div class="btn-group">
+        <a href="#order" class="btn-primary">Request a Report</a>
+        <a href="#pricing" class="btn-secondary">See pricing</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-in" style="transition-delay:0.15s">
+      <div style="display:flex;flex-direction:column;gap:0;width:100%;max-width:420px;">
+        <div style="display:flex;gap:1.4rem;align-items:flex-start;padding:1.6rem 1.8rem;background:white;border:1px solid var(--border);border-radius:4px 4px 0 0;position:relative;">
+          <div style="flex-shrink:0;width:40px;height:40px;background:var(--ink);border-radius:2px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;color:var(--gold-light);">1</span>
+          </div>
+          <div>
+            <div style="font-weight:500;font-size:0.95rem;margin-bottom:0.3rem;color:var(--ink);">Submit your request</div>
+            <div style="font-size:0.8rem;color:var(--muted);font-weight:300;line-height:1.6;">Tell us the Japanese company name and why you need the report. No payment at this stage.</div>
+          </div>
+          <div style="position:absolute;bottom:-12px;left:2rem;width:1px;height:24px;background:var(--gold);z-index:1;"></div>
+        </div>
+        <div style="display:flex;gap:1.4rem;align-items:flex-start;padding:1.6rem 1.8rem;background:var(--cream);border:1px solid var(--border);border-top:none;position:relative;">
+          <div style="flex-shrink:0;width:40px;height:40px;background:var(--gold);border-radius:2px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;color:var(--ink);">2</span>
+          </div>
+          <div>
+            <div style="font-weight:500;font-size:0.95rem;margin-bottom:0.3rem;color:var(--ink);">We research &amp; analyse</div>
+            <div style="font-size:0.8rem;color:var(--muted);font-weight:300;line-height:1.6;">We source financial data from Japanese public channels that standard databases cannot reach. You are invoiced only once availability is confirmed.</div>
+          </div>
+          <div style="position:absolute;bottom:-12px;left:2rem;width:1px;height:24px;background:var(--gold);z-index:1;"></div>
+        </div>
+        <div style="display:flex;gap:1.4rem;align-items:flex-start;padding:1.6rem 1.8rem;background:white;border:1px solid var(--border);border-top:none;border-radius:0 0 4px 4px;">
+          <div style="flex-shrink:0;width:40px;height:40px;background:var(--ink);border-radius:2px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;color:var(--gold-light);">3</span>
+          </div>
+          <div>
+            <div style="font-weight:500;font-size:0.95rem;margin-bottom:0.3rem;color:var(--ink);">Receive your PDF report</div>
+            <div style="font-size:0.8rem;color:var(--muted);font-weight:300;line-height:1.6;">A clear, plain-English report with financial analysis and a definitive recommendation — delivered within 3–7 business days.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div><span class="stat-num">12+</span><span class="stat-label">Years Japan–NZ trade experience</span></div>
+    <div><span class="stat-num">3</span><span class="stat-label">Countries of operational experience</span></div>
+    <div><span class="stat-num">2</span><span class="stat-label">Report plans available</span></div>
+    <div><span class="stat-num">USD</span><span class="stat-label">Internationally priced in US dollars</span></div>
+  </div>
+</div>
+<div style="background:var(--gold);padding:1.8rem 5vw;">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center;">
+    <div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.9rem;font-weight:600;color:var(--ink);line-height:1;">99%</div>
+      <div style="font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,24,20,0.7);margin-top:0.3rem;">of Japanese companies are privately held</div>
+    </div>
+    <div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.9rem;font-weight:600;color:var(--ink);line-height:1;">Zero</div>
+      <div style="font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,24,20,0.7);margin-top:0.3rem;">public financial statements for most SMEs</div>
+    </div>
+    <div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.9rem;font-weight:600;color:var(--ink);line-height:1;">JBI</div>
+      <div style="font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,24,20,0.7);margin-top:0.3rem;">sources what standard databases cannot</div>
+    </div>
+  </div>
+</div>
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <div class="section-tag">Why JBI Report</div>
+        <h2>Financial data that<br>standard databases<br>can't <em>reach.</em></h2>
+        <p>Over 99% of Japanese companies are privately held and are not required to publish detailed financial statements. Standard database services can only access what is publicly filed — which for most SMEs is very little.</p>
+        <p>JBI Report goes further. Drawing on 12+ years of hands-on Japan–NZ trade experience and a background in Japanese corporate banking, we source financial data from non-obvious public channels, interpret it with a lender's eye, and deliver a clear verdict in plain English.</p>
+        <p>The result is the kind of financial intelligence that gives NZ and Australian companies a genuine advantage before signing contracts or committing to large orders with Japanese suppliers.</p>
+        <ul class="credential-list">
+          <li>Private company financial data sourced from non-obvious Japanese public channels</li>
+          <li>Interpreted using Japanese corporate banking and credit analysis methodology</li>
+          <li>Benchmarked against METI industry data for context that generic reports lack</li>
+          <li>Delivered in plain English with a clear recommendation — not just raw data</li>
+        </ul>
+      </div>
+      <div class="about-visual fade-in" style="transition-delay:0.15s">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">Phase 1</div>
+            <div class="timeline-content"><div class="timeline-role">Japanese banking</div><div class="timeline-org">Corporate finance &amp; credit analysis</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Phase 2</div>
+            <div class="timeline-content"><div class="timeline-role">NZ food import operations</div><div class="timeline-org">General management &amp; purchasing</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Phase 3</div>
+            <div class="timeline-content"><div class="timeline-role">AU wholesale operations</div><div class="timeline-org">Executive leadership, 200+ staff</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Phase 4</div>
+            <div class="timeline-content"><div class="timeline-role">Japan supply chain management</div><div class="timeline-org">NZ automotive import sector</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Now</div>
+            <div class="timeline-content"><div class="timeline-role">Japan–NZ business consulting</div><div class="timeline-org"><a href="https://www.jkplanning.net/" target="_blank" style="color:var(--gold);text-decoration:none;">JK Planning Ltd</a> + JBI Report</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">What's included</div>
+    <h2>Private company data.<br>One clear <em>verdict.</em></h2>
+    <div class="services-grid">
+      <div class="service-card fade-in"><div class="service-icon">I</div><h3>Company Profile</h3><p>Legal name, registration number, registered address, establishment date, legal form, and principal business activities — verified against official Japanese government registries.</p></div>
+      <div class="service-card fade-in" style="transition-delay:0.1s"><div class="service-icon">II</div><h3>Financial Health Score</h3><p>Financial data sourced from non-obvious Japanese public channels — including official gazette filings and government registries that standard databases overlook. Interpreted using Japanese corporate banking methodology.</p></div>
+      <div class="service-card fade-in" style="transition-delay:0.2s"><div class="service-icon">III</div><h3>Director &amp; Ownership</h3><p>Current directors, their appointment dates, and shareholder structure where available — important signals for stability, succession risk, and decision-making authority.</p></div>
+      <div class="service-card fade-in"><div class="service-icon">IV</div><h3>Trade Risk Assessment</h3><p>NZ/AU-specific risk evaluation covering payment culture, export readiness, minimum order realities, and red flags specific to Japan–Oceania trade relationships.</p></div>
+      <div class="service-card fade-in" style="transition-delay:0.1s"><div class="service-icon">V</div><h3>Negative Flag Check</h3><p>Screening against insolvency filings, dissolution notices, court records, and regulatory actions using publicly available Japanese government sources.</p></div>
+      <div class="service-card fade-in" style="transition-delay:0.2s"><div class="service-icon">VI</div><h3>Recommendation</h3><p>A clear, plain-English verdict: proceed, proceed with conditions, or hold — with specific notes on what to watch, what to negotiate, and what questions to ask before signing.</p></div>
+    </div>
+  </div>
+</section>
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-tag">Pricing</div>
+    <h2>Simple, transparent <em>fees.</em></h2>
+    <div class="pricing-grid">
+      <div class="price-card fade-in">
+        <div class="price-tier">Standard Plan</div>
+        <div class="price-amount">120 <span>USD</span></div>
+        <div class="price-delivery">Delivered within 3–5 business days</div>
+        <ul class="price-features">
+          <li>Company profile &amp; registration</li>
+          <li>Directors &amp; ownership structure</li>
+          <li>Principal business activities</li>
+          <li>Revenue &amp; profit summary (3 years)</li>
+          <li>Negative flag check</li>
+          <li>Trade risk assessment</li>
+          <li>Plain-English recommendation</li>
+          <li>PDF delivery via email</li>
+        </ul>
+        <a href="#order" class="btn-price">Request Standard — USD 120</a>
+        <a href="JBI_Standard_Sample.pdf" download style="display:block;text-align:center;padding:0.55rem;font-size:0.75rem;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:var(--muted);margin-top:0.6rem;transition:color 0.2s;" onmouseover="this.style.color='#b8963e'" onmouseout="this.style.color='#6b6560'">&#8595; Download sample report</a>
+      </div>
+      <div class="price-card featured fade-in" style="transition-delay:0.1s">
+        <span class="price-tag">Full analysis</span>
+        <div class="price-tier">Premium Plan</div>
+        <div class="price-amount">300 <span>USD</span></div>
+        <div class="price-delivery">Delivered within 5–7 business days</div>
+        <ul class="price-features">
+          <li>Everything in Standard, plus:</li>
+          <li>Full balance sheet (BS)</li>
+          <li>Profit &amp; loss statement (PL)</li>
+          <li>Key financial ratios</li>
+          <li>Industry benchmark comparison</li>
+          <li>Analyst financial commentary</li>
+          <li>Enhanced recommendation &amp; action items</li>
+        </ul>
+        <a href="#order" class="btn-price">Request Premium — USD 300</a>
+        <a href="JBI_Premium_Sample.pdf" download style="display:block;text-align:center;padding:0.55rem;font-size:0.75rem;font-weight:400;letter-spacing:0.04em;text-decoration:none;color:rgba(245,242,236,0.5);margin-top:0.6rem;transition:color 0.2s;" onmouseover="this.style.color='#d4b060'" onmouseout="this.style.color='rgba(245,242,236,0.5)'">&#8595; Download sample report</a>
+      </div>
+    </div>
+    <p style="font-size:0.8rem;color:var(--muted);margin-top:1.4rem;font-weight:300;">All prices in USD. You will be invoiced only after availability is confirmed — no charge if research cannot be completed. Payment via credit card or bank transfer.</p>
+  </div>
+</section>
+<section id="order">
+  <div class="section-inner">
+    <div class="order-grid">
+      <div class="order-info fade-in">
+        <div class="section-tag">Request a report</div>
+        <h2>Ready to check<br>your Japanese <em>partner?</em></h2>
+        <p>Submit the form below with the Japanese company name and your reason for the enquiry. There is no charge at this stage — we confirm availability first, then invoice you once research is underway.</p>
+        <p>If sufficient information cannot be obtained for your requested company, you will be notified at no charge within 2 business days. All enquiries are handled confidentially.</p>
+        <ol class="process-steps">
+          <li><span class="step-num">1</span>Submit the request form — no payment required at this stage</li>
+          <li><span class="step-num">2</span>We confirm availability within 1–2 business days</li>
+          <li><span class="step-num">3</span>Receive invoice and pay via bank transfer or credit card</li>
+          <li><span class="step-num">4</span>Research begins upon payment confirmation</li>
+          <li><span class="step-num">5</span>PDF report delivered within the agreed timeframe</li>
+        </ol>
+      </div>
+      <div class="fade-in" style="transition-delay:0.15s">
+        <div class="order-form">
+          <div class="form-title">Request a Report</div>
+          <div class="form-sub">No payment required yet — we confirm availability first.</div>
+          <div class="form-row">
+            <div class="form-group"><label>Your name</label><input type="text" placeholder="Jane Smith"></div>
+            <div class="form-group"><label>Company</label><input type="text" placeholder="Your company"></div>
+          </div>
+          <div class="form-group"><label>Email address</label><input type="email" placeholder="jane@company.co.nz"></div>
+          <div class="form-group"><label>Japanese company name</label><input type="text" placeholder="e.g. Yamamoto Trading Co., Ltd."></div>
+          <div class="form-group">
+            <label>Report plan</label>
+            <div class="radio-group">
+              <label class="radio-option"><input type="radio" name="report-type" value="standard" checked><span class="radio-label">Standard</span><span class="radio-price">USD 120 · 3–5 days</span></label>
+              <label class="radio-option"><input type="radio" name="report-type" value="premium"><span class="radio-label">Premium</span><span class="radio-price">USD 300 · 5–7 days</span></label>
+            </div>
+          </div>
+          <div class="form-group"><label>Purpose of enquiry</label><textarea placeholder="e.g. We are considering a new supplier relationship with this company and want to verify their financial stability before signing a contract."></textarea></div>
+          <button class="btn-submit" type="button">Submit Request — No Payment Yet</button>
+          <p class="form-note">Confidential. We confirm availability before invoicing. No charge if research cannot be completed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">JBI<span>.</span>Report</div>
+      <p class="footer-tagline">Japan Business Intelligence — Private Company Specialists<br>for NZ and Australian companies.<br>Based in Auckland, New Zealand.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#pricing">Standard Plan — USD 120</a></li>
+        <li><a href="#pricing">Premium Plan — USD 300</a></li>
+        <li><a href="#order">Request a Report</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#order">Submit an enquiry</a></li>
+        <li><a href="https://www.jkplanning.net/" target="_blank">JK Planning Ltd</a></li>
+        <li><a href="#">Auckland, New Zealand</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 JBI Report / JK Planning Ltd. All rights reserved.</span>
+    <span>Auckland, New Zealand</span>
+  </div>
+</footer>
+<script>
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } }); }, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { const target = document.querySelector(a.getAttribute('href')); if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); } }); });
+</script>
+</body>
+</html>
