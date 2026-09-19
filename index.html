@@ -855,6 +855,11 @@ footer { background: var(--ink); color: rgba(245,242,236,0.55); padding: 3rem 5v
             <label>Purpose of enquiry</label>
             <textarea name="purpose" placeholder="e.g. We are considering a new supplier relationship with this company and want to verify their financial stability before signing a contract."></textarea>
           </div>
+          <!-- Anti-spam honeypot: hidden from real visitors; only bots fill it. Do not remove. -->
+          <div aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
+            <label for="jbi-hp">Please leave this field empty</label>
+            <input type="text" id="jbi-hp" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
           <button class="btn-submit" type="submit">Submit Request — No Payment Yet</button>
           <p class="form-note">🔒 Confidential. We confirm availability before invoicing. No charge if research cannot be completed.</p>
         </form>
